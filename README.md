@@ -12,3 +12,14 @@ This is a discord implementation of the sharkbot chatbot api that uses natural l
 ## live example bot
 - You can add a live version of sharkbot to your discord channel
 - https://discordapp.com/oauth2/authorize?client_id=268518279809597453&scope=bot&permissions=0
+
+## appsettings.json example
+{
+  "Token": "YOUR_TOKEN_HERE",
+  "ApiUrl": "https://localhost:44311/",
+  "BotName": "sharkbot",
+  "ChatType": "discord",
+  "TargetedResponseConfidenceThreshold": 0.75,
+  "ReactionConfidenceThreshold": 0.75,
+  "MaximumReactionsPerMessage": 3
+}
