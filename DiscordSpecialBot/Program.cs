@@ -1,6 +1,8 @@
 ﻿using DiscordSpecialBot.ApiServices;
 using DiscordSpecialBot.Bot;
 using DSharpPlus;
+using DSharpPlus.Entities;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -55,6 +57,7 @@ namespace DiscordSpecialBot
             discord.MessageCreated += async e =>
             {
                 var channel = channelbotConfiguration.GetChannelConfiguration(e);
+                UpdateStatus();
 
                 if (e.Message.Author.Username == discord.CurrentUser.Username)
                 {
@@ -98,6 +101,12 @@ namespace DiscordSpecialBot
 
             await discord.ConnectAsync();
             await Task.Delay(-1);
+        }
+
+        static async void UpdateStatus()
+        {
+            var memberCount = discord.Guilds.Values.Sum(guild => guild.MemberCount);
+            await discord.UpdateStatusAsync(new DiscordGame("with " + memberCount + " ♥s"), UserStatus.Online);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace DiscordSpecialBot.ApiServices
             var chat = utilityService.GetChat(e.Message, e.MentionedUsers);
             var conversationName = utilityService.GetConversationName(e.Message);
             var metadata = utilityService.GetMetadata(e.Message);
-            var chatRequest = new ChatRequest { chat = chat, type = configuration.ChatType, conversationName = conversationName, metadata = metadata, requestTime = DateTime.Now, exclusiveTypes = configuration.ExclusiveTypes, requiredProperyMatches = configuration.RequiredProperyMatches };
+            var chatRequest = new ChatRequest { chat = chat, type = configuration.ChatType, conversationName = conversationName, metadata = metadata, requestTime = DateTime.Now, exclusiveTypes = configuration.ExclusiveTypes, requiredPropertyMatches = configuration.RequiredProperyMatches };
 
             var httpContent = utilityService.GetHttpContent(chatRequest);
             var response = await client.PutAsync(configuration.ApiUrl + "/api/reaction", httpContent);
